@@ -1,0 +1,27 @@
+{% extends "layouts/default.html" %}
+
+{% block content %}
+  <div class="container">
+  	<div class="row">
+  		<div class="panel panel-success">
+  			<div class="panel-heading">
+  				<p><strong>Ticket Detail: </strong>{{data.ticket.title}} </p>
+  			</div>
+  			<div class="panel-body">
+  				<span class="label label-info pull-right"> {{data.ticket.status}}</span>
+  				<p>{{data.ticket.description}} </p>
+  			</div>
+  			<ul class="ticket-meta">
+  			<li><small>Status: </small><a href="" rel="tag">{{data.ticket.status}}</a></li>
+  			<li><small>Priority: </small><a href="" rel="tag">{{data.ticket.priority}}</a></li>
+  			<li><small>Category: </small><a href="" rel="tag">{{data.ticket.category}}</a></li>
+  			<li><small>event date: </small><a href="" rel="tag">{{data.ticket._.created.format('Do MMMM/YYYY')}}</a></li>
+  			</ul>
+  			</div>	
+ 			<div class="panel-footer"></div>
+  		</div>
+  	</div>
+  	
+  </div>
+
+{% endblock %}

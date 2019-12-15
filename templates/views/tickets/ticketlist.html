@@ -1,0 +1,61 @@
+{% extends "layouts/default.html" %}
+
+
+{% block content %}
+  <div class="container"> 
+  	<div class="panel panel-success">
+  		<div class="panel-heading">Tickets</div>
+  		<div class="panel-body">This are the list of ticket in our system</div>
+  		<table class="table table-stripped">
+  			{% for ticket in data.ticket.results %}
+  			  <tr>
+  			  	<td>
+  			  		<div class="col-md-1">
+  			  			<span class="label label-info pull-right"> {{ticket.status}} </span>
+  			  		</div>
+  			  		<a href="{{ticket.url}}"><b>{{ticket.title | capitalize}} </b></a>
+  			  		<ul class="ticket-meta">
+  			  			<li>&nbsp</li>
+  			  			<li>
+  			  				<small>
+  			  					Status
+  			  				</small>
+  			  				<a href="" rel="tag">{{ticket.priority}}</a>
+  			  			</li>
+  			  			<li>
+  			  				<small>Category</small>
+  			  				<a href="" rel="tag"> {{ticket.category}}</a>
+  			  			</li>
+  			  			<li>
+  			  				<small>Last Update</small>
+  			  				<abbr class="last-updated">{{ticket._.created.format('Do MMMM YYYY')}}</abbr>
+  			  			</li>
+  			  		</ul>
+  			  	</td>
+  			  </tr>
+  			{% endfor %}
+  		</table>
+      <ul class="pagination">
+            {% if data.ticket.totalPage > 1 %}
+              {% if data.ticket.previous %}
+                <li><a class="page-num" href="?page{{data.page.previous}}">Previous</a></li>
+              {% else %}
+                <li><a class="page-num" href="?page1"></a></li>
+              {% endif %}
+                {% for i,p in data.ticket.pages %}
+                  <li><a class="page-num {% if data.ticket.currentPage == p %} active {% endif %}" href="?page {% if p== '...' %} {% if i+1 == data.ticket.totalPage %}1{% else %} {{p}} {% endif %} {% else %} {{p}} {% endif %} {{p}} "></a></li>
+                {% endfor %}
+
+                {% if data.ticket.next %}
+                  <li><a class="page-num" href="?page {{data.ticket.next}}">Next</a></li>
+                {% else %}
+                  <li><a class="page-num" href="?page {{data.ticket.totalPage}} "> Next</a></li>
+                {% endif %}
+            {% endif %}
+
+          </ul>
+		<div class="panel-footer"></div>  		
+  	</div>
+  </div>
+
+{% endblock %}
