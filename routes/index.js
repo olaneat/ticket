@@ -43,11 +43,11 @@ exports = module.exports = function (app) {
 	app.all('/createticket', middleware.requireUser, routes.views.ticket.newticket);
 	app.get('/tickets/:slug', routes.views.ticket.singleticket);
 	app.all('/signup', routes.views.auth.signup);
-	app.all('/signin', routes.views.auth.signin);
-	app.get('/signout', routes.views.auth.signout);
-	app.all('/forgotpassword',routes.views.auth.forgotpassword);
-	app.all('/resetpassword/:key', routes.views.auth.resetpassword);
-	app.all('/admin*', middleware.isAdmin);
+	//app.all('/signin', routes.views.auth.signin);
+	//app.get('/signout', routes.views.auth.signout);
+	//app.all('/forgotpassword',routes.views.auth.forgotpassword);
+	//app.all('/resetpassword/:key', routes.views.auth.resetpassword);
+	//app.all('/admin*', middleware.isAdmin);
 	//app.get('/admin/*', [middleware.requireUser, middleware.logRequests]);
 	//app.get('/admin/viewcontent', routes.views.viewcontent);
 	//app.post('/admin/editcontent', routes.views.editcontent);

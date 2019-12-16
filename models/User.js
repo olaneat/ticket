@@ -18,7 +18,7 @@ User.add({
 	resetPasswordKey: {type: String, hidden: true}
 }, 'Permissions', {
 	isAdmin: { type: Boolean, label: 'Can access Keystone', index: true },
-	confirmPassword:{type:Types.Password, initial: true, required:true}
+	
 });
 
 // Provide access to Keystone
@@ -26,7 +26,7 @@ User.schema.virtual('canAccessKeystone').get(function () {
 	return this.isAdmin;
 });
 User.schema.virtual('url').get(function() {
-	return '/user'+this.slug;
+	return '/users'+this.slug;
 })
 
 
